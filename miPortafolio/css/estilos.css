@@ -1,0 +1,92 @@
+/* configuracion gral */
+*{
+    box-sizing: border-box;
+}
+
+/* configuracion de navegacio */
+html{
+    scroll-behavior: smooth;
+}
+
+/* configuracion del body */
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: black;
+    background-color: #f4f4f4;
+}
+
+/* configuracion del encabezado */
+header{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: black;
+    color: ghostwhite;
+}
+
+/*selectores decendientes */
+
+header h1{
+    margin: 0;
+    font-size: 50px;
+}
+
+header p{
+    margin-top: 10px;
+    font-size: 20px;
+    font-style: italic;
+}
+
+/* navegacion */
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    background-color: aliceblue;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a{
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+/* main */
+
+main{
+    max-width: 1100px;
+    margin:0 auto ;
+    background-color: rgb(198, 198, 198);
+}
+
+/* Secciones */
+section{
+    padding: 60px 40px;
+    border-bottom: 1px solid #ddd;
+
+}
+
+section h2{
+    margin-top: 0;
+    margin-bottom: 30 px;
+    text-align: center;
+    font-size: 30px;
+}
+
+/*selectores de clases*/
+/*seccion de inicio*/
+
+.seccion-inicio{
+    min-height: 400px;
+    display: flex ;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
