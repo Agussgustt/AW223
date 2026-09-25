@@ -90,3 +90,102 @@ section h2{
     align-content: center;
     text-align: center;
 }
+
+/* seccion de contenido */
+.seccion-contenido{
+    max-width: 700px;
+}
+
+.seccion-contenido h2{
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.seccion-contenido p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.boton, button{
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: azure;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boton:hover, button:hover{
+    background-color: rgb(134, 135, 135);
+    color: black;
+}
+
+/* seccion sobre mi */
+.sobre-mi-contenido{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.sobre-mi-contenido img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sobre-mi-contenido p{
+    font-size: 18px;
+}
+
+
+/* habilidades */
+.lista-habilidades{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-habilidades li{
+    padding: 12px 20px;
+    background-color: aliceblue;
+    border: 1px solid blanchedalmond;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* seccion de mis proyectos */
+.contenedor-proyectos{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+   
+}
+
+.proyecto{
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    border: 1px solid blanchedalmond;
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+.proyecto h3{
+    margin-top:0 ;
+    font-size: 22px;
+}
+
+.proyecto a{
+    color:rgb(49, 84, 200) ;
+    font-weight: bold;
+}
+
