@@ -11,7 +11,8 @@
     <!-- aqui esta el encabezado -->    
     <header>
         <h1> Mi Portafolio </h1>
-        <p> Bienvenido a mi sitio web personal </p>
+        <p id="mensaje-bienvenida"> Bienvenido a mi sitio web personal </p>
+        <button type="button" id="cambiar-bienvenida">Cambiar mensaje</button>
     </header>
 
     <!-- aqui comienza la barra de navegacion -->
@@ -37,7 +38,7 @@
         <section>
             <h2> Sobre mi </h2>
             <div class="sobre-mi-contenido">  
-                 <img src="hola.png" alt=""> 
+                 <img src="hola.png" alt="imagen de perfil"> 
                  <div>
                     <p> Algo sobre mi imagen </p>
                     <p> En esta practica estoy aprendiendo HTML & CSS </p>
@@ -48,6 +49,13 @@
         <!-- seccion de habilidades -->
          <section>
             <h2> Mis Habilidades </h2>
+
+
+            <div class="cambiar-diseno">
+                <button type="button" id="color">Cambiar color</button>
+                <button type="button" id="fuente">Cambiar tipografia</button>
+            </div>
+
             <ul class="lista-habilidades">
                 <li>JAVA</li>
                 <li>PSint</li>
@@ -84,15 +92,16 @@
           <section id="contacto">
             <h2> Contactame </h2>
             
-            <form>
+            <form id="contacto-formulario" novalidate>
                 <div class="campo">
                     <label for="nombre">Nombre</label>
                     <input 
                     type="text"
                     id="nombre"
-                    name="Agustin"
-                    placeholder="Agustin Francisco Canon Rivera"
+                    name="nombre"
+                    placeholder="Ejemplo nombre"
                     >
+                    <p id="error-nombre" class="mensaje-error"></p>
                 </div>
 
                 <div class="campo">
@@ -100,9 +109,10 @@
                     <input 
                     type="email"
                     id="email"
-                    name="Agustin"
-                    placeholder="125052357@upq.edu.mx"
+                    name="email"
+                    placeholder="Ejemplo_correo@123.com"
                     >
+                    <p id="error-email" class="mensaje-error"></p>
                 </div>
 
                 <div class="campo">
@@ -117,9 +127,12 @@
                 </div>
 
                 <button type="submit">Enviar mensaje</button>
+
+                <div id="mensaje-exito" class="mensaje-exito"></div>
             </form>
           </section>
 
+          
 
 
 </main>
@@ -127,5 +140,7 @@
         <p> 2026 Mi portafolio  web </p>
         <p> Practica de Programacion Web todos los derechos reservados </p>
     </footer>
+
+     <script src="js/modificaciones.js"></script>
 </body>
 </html>
