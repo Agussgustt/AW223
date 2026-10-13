@@ -30,6 +30,7 @@ if (btnFuente) {
     });
 }
 
+//validacion de formulario
 const formulario = document.getElementById('contacto-formulario');
 const inputNombre = document.getElementById('nombre');
 const inputEmail = document.getElementById('email');
