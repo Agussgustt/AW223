@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+d/* ocument.addEventListener('DOMContentLoaded', () => {
 //boton de bienvenida
 const mensaje = document.getElementById('mensaje-bienvenida');
 const boton = document.getElementById('cambiar-bienvenida');
@@ -74,4 +74,4 @@ formulario.addEventListener('submit', (event) =>{
 
 }
 
-});
+}); */

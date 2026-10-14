@@ -93,13 +93,13 @@
           <section id="contacto">
             <h2> Contactame </h2>
             
-            <form id="contacto-formulario" novalidate>
+            <form id="contacto-formulario" action="guardar_mensaje.php" method="POST">
                 <div class="campo">
                     <label for="nombre">Nombre</label>
                     <input 
                     type="text"
                     id="nombre"
-                    name="nombre"
+                    name="txtnombre"
                     placeholder="Ejemplo nombre"
                     >
                     <p id="error-nombre" class="mensaje-error"></p>
@@ -110,7 +110,7 @@
                     <input 
                     type="email"
                     id="email"
-                    name="email"
+                    name="txtemail"
                     placeholder="Ejemplo_correo@123.com"
                     >
                     <p id="error-email" class="mensaje-error"></p>
@@ -120,7 +120,7 @@
                     <label for="mensaje">Mensaje</label>
                     <textarea 
                         id="mensaje"
-                        name="mensaje"
+                        name="txtmensaje"
                         rows="5"
                         placeholder="hola que tal, cualquier duda al correo">
                     </textarea>
