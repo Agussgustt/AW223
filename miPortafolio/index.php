@@ -142,6 +142,8 @@
         <p> Practica de Programacion Web todos los derechos reservados </p>
     </footer>
 
-     <script src="js/modificaciones.js"></script>
+    <script src="js/AlertInsert.js"></script> 
+
+   <!--   <script src="js/modificaciones.js"></script> -->
 </body>
 </html>

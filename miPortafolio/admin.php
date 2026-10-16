@@ -26,34 +26,32 @@
                 <table class="tabla-mensajes">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Mensaje</th>
+                            <th>Fecha</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ana</td>
-                            <td>anita@Example.com</td>
-                            <td>Hola, Soy Ana y me interasa tu portafolio</td>
-                            <td class="acciones">
-                                <a href="editar.php?id=1" class="btn-accion editar" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn-accion borrar" title="Borrar"><i class="fa-solid fa-trash"></i></a>
+
+                        <?php
+                            require 'consulta_mensajes.php';
+                            $rsMensajes= consultaMensajes();
+                            while($arrMensajes= mysqli_fetch_array($rsMensajes)){
+                        echo"<tr>
+                            <td>" . $arrMensajes['nombre'] . "</td>
+                            <td>" . $arrMensajes['correo'] . "</td>
+                            <td>" . $arrMensajes['mensaje'] . "</td>
+                            <td>" . $arrMensajes['timeStaps'] . "</td>
+                            <td class='acciones'>
+                                <a href='editar.php?id=" . $arrMensajes['id'] . "' class='btn-accion editar' title='Editar'><i class='fa-solid fa-pen-to-square'></i></a>
+                                <a href='#' class='btn-accion borrar' title='Borrar'><i class='fa-solid fa-trash'></i></a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Josesin</td>
-                            <td>jose@example.com</td>
-                            <td>Quisiera mas informacion sobre tus proyectos</td>
-                            <td class="acciones">
-                                <a href="editar.php?id=2" class="btn-accion editar" title="Editar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn-accion borrar" title="Borrar"><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                        </tr>";
+                        }
+                        ?>
+
                     </tbody>
                 </table>
             </div>
