@@ -1,4 +1,4 @@
-d/* ocument.addEventListener('DOMContentLoaded', () => {
+/* ocument.addEventListener('DOMContentLoaded', () => {
 //boton de bienvenida
 const mensaje = document.getElementById('mensaje-bienvenida');
 const boton = document.getElementById('cambiar-bienvenida');

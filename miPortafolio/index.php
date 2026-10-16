@@ -17,12 +17,12 @@
 
     <!-- aqui comienza la barra de navegacion -->
     <nav>
-        <a href=""> Inicio </a>
-        <a href=""> Sobre Mi </a>
-        <a href=""> Habilidades </a>
-        <a href=""> Proyectos </a>
-        <a href=""> Contacto </a>
-        <a href="admin.php"> Admin </a>
+        <a href="" aria-label="Inicio"> Inicio </a>
+        <a href="" aria-label="Sobre Mi"> Sobre Mi </a>
+        <a href="" aria-label="Habilidades"> Habilidades </a>
+        <a href="" aria-label="Proyectos"> Proyectos </a>
+        <a href="" aria-label="Contacto"> Contacto </a>
+        <a href="admin.php" aria-label="Administración"> Admin </a>
     </nav>
     <!-- contenido principal -->
     <main>
@@ -101,8 +101,9 @@
                     id="nombre"
                     name="txtnombre"
                     placeholder="Ejemplo nombre"
+                    required
                     >
-                    <p id="error-nombre" class="mensaje-error"></p>
+                    <!-- <p id="error-nombre" class="mensaje-error"></p> -->
                 </div>
 
                 <div class="campo">
@@ -112,8 +113,9 @@
                     id="email"
                     name="txtemail"
                     placeholder="Ejemplo_correo@123.com"
+                    required
                     >
-                    <p id="error-email" class="mensaje-error"></p>
+                    <!-- <p id="error-email" class="mensaje-error"></p> -->
                 </div>
 
                 <div class="campo">
@@ -122,8 +124,11 @@
                         id="mensaje"
                         name="txtmensaje"
                         rows="5"
-                        placeholder="hola que tal, cualquier duda al correo">
-                    </textarea>
+                        placeholder="hola que tal, cualquier duda al correo"
+                        required
+                        ></textarea>
+                        
+                    <!-- <p id="error-mensaje" class="mensaje-error"></p> -->
 
                 </div>
 
