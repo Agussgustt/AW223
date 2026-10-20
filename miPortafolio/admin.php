@@ -47,8 +47,22 @@
                             <td>" . $arrMensajes['mensaje'] . "</td>
                             <td>" . $arrMensajes['timeStaps'] . "</td>
                             <td class='acciones'>
-                                <a href='editar.php?id=" . $arrMensajes['id'] . "' class='btn-accion editar' title='Editar'><i class='fa-solid fa-pen-to-square'></i></a>
-                                <a href='#' class='btn-accion borrar' title='Borrar'><i class='fa-solid fa-trash'></i></a>
+                                <a href='editar.php?correo=" . $arrMensajes['correo'] . "' class='btn-accion editar' title='Editar'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
+                                    <path fill='none' d='M0 0h24v24H0z'/>
+                                    <path d='M12 4c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm0 14c-3.3137 0-6-2.6863-6-6s2.6863-6 6-6 6 2.6863 6 6-2.6863 6-6 6zm1-9h-2v5h5v-2h-3z'/>
+                                </svg>
+                                </a>
+
+
+                                <a href='eliminar_mensaje.php?correo=" . $arrMensajes['correo'] . "' class='btn-accion borrar' title='Borrar' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este mensaje?\");'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'>
+                                    <path fill='none' d='M0 0h24v24H0z'/>
+                                    <path d='M6 19c0 1.1046.8954 2 2 2h8c1.1046 0 2-.8954 2-2V7H6v12zm3.5-7h1v5h-1v-5zm5 0h1v5h-1v-5zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z'/>
+                                </svg>
+                                </a>
+
+                                
                             </td>
                         </tr>";
                         }
@@ -66,3 +80,10 @@
     </footer>
 </body>
 </html>
+
+
+                               <!--  /* <a href='editar.php?correo=" . $arrMensajes['correo'] . "' class='btn-accion editar' title='Editar'>
+                                <i class='fa-solid fa-file-pen'></i></a> */ -->
+<!-- 
+                                /* <a href='borrar_mensaje.php?correo=" . $arrMensajes['correo'] . "' class='btn-accion borrar' title='Borrar'>
+                                <i class='fa-solid fa-trash-can'></i></a> */ -->

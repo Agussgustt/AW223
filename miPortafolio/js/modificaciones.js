@@ -1,3 +1,37 @@
+document.addEventListener('DOMContentLoaded', () => {
+    //boton de bienvenida
+    const mensaje = document.getElementById('mensaje-bienvenida');
+    const boton = document.getElementById('cambiar-bienvenida');
+
+    if (boton && mensaje) {
+        boton.addEventListener('click', () => {
+            mensaje.textContent = 'Saludos y Bienvenido';
+        });
+    }
+
+    const btnColor = document.getElementById('color');
+    const btnFuente = document.getElementById('fuente');
+    const habilidadesItems = document.querySelectorAll('.lista-habilidades li');
+
+    if (btnColor) {
+        btnColor.addEventListener('click', () => {
+            habilidadesItems.forEach(item => {
+                item.classList.toggle('c-color');
+            });
+        });
+    }
+
+    if (btnFuente) {    
+        btnFuente.addEventListener('click', () => {
+            habilidadesItems.forEach(item => {
+                item.classList.toggle('m-fuente');
+            });
+        });
+    }
+
+});
+
+
 /* ocument.addEventListener('DOMContentLoaded', () => {
 //boton de bienvenida
 const mensaje = document.getElementById('mensaje-bienvenida');

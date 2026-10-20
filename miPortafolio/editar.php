@@ -1,3 +1,28 @@
+<?php
+
+    require_once("conexion.php");
+
+    if(!isset($_GET['correo'])){
+        header("Location: admin.php");
+        exit();
+    }
+
+    $correo_viejo = $_GET['correo'];
+
+    $sql = "SELECT * FROM mensajes WHERE correo = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("s", $correo_viejo);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $mensaje = $resultado->fetch_assoc();
+
+    if(!$mensaje){
+        header("Location: admin.php");
+        exit();
+    }
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,20 +52,21 @@
         <section class="seccion-editar">
             <h2>Editar Mensaje</h2>
 
-            <form action="#" method="POST" class="form-editar">
+            <form action="actualizar_mensaje.php" method="POST" class="form-editar">
+                <input type="hidden" name="correo_viejo" value="<?php echo $mensaje['correo']; ?>">
                 <div class="campo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" value="Ana" required>
+                    <input type="text" id="nombre" name="nombre" value="<?php echo $mensaje['nombre']; ?>" required>
                 </div>
 
                 <div class="campo">
                     <label for="email">Correo electronico</label>
-                    <input type="email" id="email" name="email" value="ana@example.com" required>
+                    <input type="email" id="email" name="email" value="<?php echo $mensaje['correo']; ?>" required>
                 </div>
 
                 <div class="campo">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" required>Hola, me interesa tu portafolio.</textarea>
+                    <textarea id="mensaje" name="mensaje" rows="5" required><?php echo $mensaje['mensaje']; ?></textarea>
                 </div>
 
                 <button type="submit" class="btn-actualizar">Actualizar Mensaje</button>

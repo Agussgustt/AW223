@@ -363,14 +363,14 @@ form button{
     font-size: 0.9rem;
 }
 
-.btn-accion.editar {
+/* .btn-accion.editar {
     background-color: #ffc107;
     color: #000;
 }
 
 .btn-accion.borrar {
     background-color: #dc3545;
-}
+} */
 
 .form-editar {
     display: flex;

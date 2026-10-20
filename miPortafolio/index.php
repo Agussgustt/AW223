@@ -17,16 +17,17 @@
 
     <!-- aqui comienza la barra de navegacion -->
     <nav>
-        <a href="" aria-label="Inicio"> Inicio </a>
-        <a href="" aria-label="Sobre Mi"> Sobre Mi </a>
-        <a href="" aria-label="Habilidades"> Habilidades </a>
-        <a href="" aria-label="Proyectos"> Proyectos </a>
-        <a href="" aria-label="Contacto"> Contacto </a>
-        <a href="admin.php" aria-label="Administración"> Admin </a>
+        <a href="#inicio"> Inicio </a>
+        <a href="#sobre-mi"> Sobre Mi </a>
+        <a href="#habilidades"> Habilidades </a>
+        <a href="#proyectos"> Proyectos </a>
+        <a href="#contacto"> Contacto </a>
+        <a href="admin.php"> Admin </a>
     </nav>
+
     <!-- contenido principal -->
     <main>
-        <section class="seccion-inico">
+        <section id="inicio" class="seccion-inico">
             <div class="seccion-contenido">
                 <h2> Hola, Soy Agustin Rivera </h2>
                 <p> Soy estudiante de TIID y estoy aprendiendo web </p>
@@ -36,7 +37,7 @@
     
 
     <!-- seccion sobre mi -->
-        <section>
+        <section id="sobre-mi">
             <h2> Sobre mi </h2>
             <div class="sobre-mi-contenido">  
                  <img src="hola.png" alt="imagen de perfil"> 
@@ -48,7 +49,7 @@
         </section>
 
         <!-- seccion de habilidades -->
-         <section>
+         <section id="habilidades">
             <h2> Mis Habilidades </h2>
 
 
@@ -67,7 +68,7 @@
          </section>
 
         <!-- Seccion de proyectos -->
-         <section>
+         <section id="proyectos">
             <h2> Mis proyectos </h2>
             <div class="contenedor-proyectos">
                 <article class="proyecto"> 
@@ -149,6 +150,6 @@
 
     <script src="js/AlertInsert.js"></script> 
 
-   <!--   <script src="js/modificaciones.js"></script> -->
+   <script src="js/modificaciones.js"></script>
 </body>
 </html>
