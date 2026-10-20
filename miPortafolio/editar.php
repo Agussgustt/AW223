@@ -56,17 +56,17 @@
                 <input type="hidden" name="correo_viejo" value="<?php echo $mensaje['correo']; ?>">
                 <div class="campo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" value="<?php echo $mensaje['nombre']; ?>" required>
+                    <input type="text" id="nombre" name="txtnombre" value="<?php echo $mensaje['nombre']; ?>" required>
                 </div>
 
                 <div class="campo">
                     <label for="email">Correo electronico</label>
-                    <input type="email" id="email" name="email" value="<?php echo $mensaje['correo']; ?>" required>
+                    <input type="email" id="email" name="txtemail" value="<?php echo $mensaje['correo']; ?>" required>
                 </div>
 
                 <div class="campo">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" required><?php echo $mensaje['mensaje']; ?></textarea>
+                    <textarea id="mensaje" name="txtmensaje" rows="5" required><?php echo $mensaje['mensaje']; ?></textarea>
                 </div>
 
                 <button type="submit" class="btn-actualizar">Actualizar Mensaje</button>

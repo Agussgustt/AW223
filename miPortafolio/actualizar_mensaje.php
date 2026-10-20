@@ -15,7 +15,7 @@ if(empty($nombre) || empty($correo) || empty($mensaje)){
     exit();
 }
 
-$sqlActualizar = "UPDATE mensaje SET nombre = ?, correo = ?, mensaje = ? WHERE correo = ?";
+$sqlActualizar = "UPDATE mensajes SET nombre = ?, correo = ?, mensaje = ? WHERE correo = ?";
 
 $stmt = $conexion->prepare($sqlActualizar);
 $stmt->bind_param("ssss", $nombre, $correo, $mensaje, $correo_viejo);

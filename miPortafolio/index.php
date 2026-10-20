@@ -31,7 +31,7 @@
             <div class="seccion-contenido">
                 <h2> Hola, Soy Agustin Rivera </h2>
                 <p> Soy estudiante de TIID y estoy aprendiendo web </p>
-                <a href="" class="boton"> Ver mis proyectos </a>
+                <a href="#proyectos" class="boton"> Ver mis proyectos </a>
             </div>
         </section>
     
