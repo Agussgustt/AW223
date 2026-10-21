@@ -78,6 +78,9 @@
         <p>2026 Mi portafolio web</p>
         <p>Practica de Programacion Web - Todos los derechos reservados</p>
     </footer>
+
+    <script src="./js/AlertAdmin.js"></script>
+    <!-- <script src="./js/AlertActualizar.js"></script> -->
 </body>
 </html>
 

@@ -11,19 +11,13 @@ if(isset($_GET['correo'])){
     $stmt->bind_param("s", $correo);
 
     if($stmt->execute()){
-        echo "<script>
-        alert('Mensaje eliminado correctamente');
-        window.location.href = 'admin.php';</script>";
+        header("Location: admin.php?estadophp=borrar_exito");
     }else{
-        echo "<script>
-        alert('Error al eliminar el mensaje');
-        window.location.href = 'admin.php';</script>";
+        header("Location: admin.php?estadophp=borrar_error");
     }
 
     $stmt->close();
     $conexion->close();
 } else {
-    echo "<script>
-    alert('Correo no proporcionado');
-    window.location.href = 'admin.php';</script>";
+    header("Location: admin.php?estadophp=error");
 }

@@ -9,9 +9,8 @@
 
 
 if(empty($nombre) || empty($correo) || empty($mensaje)){
-    echo "<script>
-    alert('Por favor, complete todos los campos');
-    window.location.href = 'editar.php?id=$id&estadophp=vacio';</script>";
+
+    header("Location:editar.php?correo=$correo_viejo&estadophp=vacio");
     exit();
 }
 
@@ -21,13 +20,9 @@ $stmt = $conexion->prepare($sqlActualizar);
 $stmt->bind_param("ssss", $nombre, $correo, $mensaje, $correo_viejo);
 
 if($stmt->execute()){
-    echo "<script>
-    alert('Mensaje actualizado correctamente');
-    window.location.href = 'admin.php';</script>";
+    header("Location: admin.php?estadophp=actualizacion_exito");
 }else{
-    echo "<script>
-    alert('Error al actualizar el mensaje');
-    window.location.href = 'admin.php';</script>";
+    header("Location: admin.php?estadophp=actualizacion_error");
 }
 
 $stmt->close();
