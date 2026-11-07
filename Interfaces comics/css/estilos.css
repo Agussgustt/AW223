@@ -1133,3 +1133,329 @@ input:checked + .toggle-slider {
 input:checked + .toggle-slider:before {
   transform: translateX(20px);
 }
+
+/* ---------------------------------------------------------
+   14. SISTEMA DE ALERTAS Y MODALES EN JAVASCRIPT (JS/alertas.js)
+   --------------------------------------------------------- */
+.komix-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.komix-toast {
+  pointer-events: auto;
+  position: relative;
+  background-color: #1a1a1e;
+  color: #ffffff;
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 440px;
+  padding: 14px 18px 18px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.komix-toast.komix-toast-fadeout {
+  animation: toastSlideOut 0.3s forwards;
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+}
+
+.komix-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.komix-toast-icon {
+  flex-shrink: 0;
+}
+
+.komix-toast-success .komix-toast-icon {
+  color: #22c55e;
+}
+.komix-toast-success {
+  border-left: 4px solid #22c55e;
+}
+
+.komix-toast-error .komix-toast-icon,
+.komix-toast-danger .komix-toast-icon {
+  color: #ef4444;
+}
+.komix-toast-error,
+.komix-toast-danger {
+  border-left: 4px solid #ef4444;
+}
+
+.komix-toast-warning .komix-toast-icon {
+  color: #f59e0b;
+}
+.komix-toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.komix-toast-info .komix-toast-icon {
+  color: #38bdf8;
+}
+.komix-toast-info {
+  border-left: 4px solid #38bdf8;
+}
+
+.komix-toast-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.komix-toast-close {
+  background: transparent;
+  color: #888;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 4px;
+  margin-left: 10px;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.komix-toast-close:hover {
+  color: #ffffff;
+}
+
+.komix-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: toastProgress linear forwards;
+}
+
+@keyframes toastProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Modal de Confirmación Diálogo (JS/alertas.js) */
+.komix-modal-alert-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  animation: alertFadeIn 0.2s ease-out;
+}
+
+.komix-modal-alert-overlay.fade-out {
+  animation: alertFadeOut 0.2s ease-out forwards;
+}
+
+@keyframes alertFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes alertFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.komix-modal-alert-card {
+  width: 90%;
+  max-width: 440px;
+  background-color: #171515;
+  border: 2px solid var(--color-rojo-komix);
+  border-radius: 16px;
+  padding: 28px 24px 24px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(123, 8, 8, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.komix-alert-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.komix-alert-icon-box.danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 2px solid rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+.komix-alert-icon-box.warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  color: #f59e0b;
+}
+
+.komix-alert-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.komix-alert-body {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.komix-alert-footer {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.komix-btn-alert {
+  flex: 1;
+  height: 42px;
+  border-radius: var(--radio-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.komix-btn-alert.cancel {
+  background-color: #27272a;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+}
+
+.komix-btn-alert.cancel:hover {
+  background-color: #3f3f46;
+  color: #ffffff;
+}
+
+.komix-btn-alert.confirm.danger {
+  background-color: var(--color-rojo-komix);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(123, 8, 8, 0.5);
+}
+
+.komix-btn-alert.confirm.danger:hover {
+  background-color: #9c0b0b;
+  transform: translateY(-1px);
+}
+
+/* Estado de Edición de Usuario y Proveedor */
+.table-data-row.editando-fila,
+.proveedor-card.editando-card {
+  background-color: #fff1f1 !important;
+  border: 2px solid var(--color-rojo-komix) !important;
+  box-shadow: 0 4px 12px rgba(123, 8, 8, 0.15) !important;
+}
+
+.badge-editando-indicador {
+  display: inline-block;
+  background-color: var(--color-rojo-komix);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radio-pill);
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+.btn-cancelar-edicion {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radio-pill);
+  height: 38px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar-edicion:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   17. FORMULARIOS E INTERFACES DE CREACIÓN Y EDICIÓN INDEPENDIENTES
+   --------------------------------------------------------- */
+.standalone-form-container {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.standalone-form-card {
+  background-color: var(--color-rojo-komix);
+  border-radius: 20px;
+  padding: 36px 32px;
+  color: var(--color-texto-blanco);
+  box-shadow: 0 10px 25px rgba(123, 8, 8, 0.25);
+}
+
+.standalone-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.standalone-form-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}

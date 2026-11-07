@@ -13,25 +13,25 @@ $comics_catalogo = [
         'id' => 1,
         'titulo' => 'Classic Comic Book Action',
         'precio' => '$150.00',
-        'imagen' => 'public/assets/images/comic_action.png'
+        'imagen' => './images/comic_action.jpg'
     ],
     [
         'id' => 2,
         'titulo' => 'The Incredible Hulk vs Wolverine',
         'precio' => '$280.00',
-        'imagen' => 'public/assets/images/comic_hulk.png'
+        'imagen' => './images/comic_hulk.jpg'
     ],
     [
         'id' => 3,
         'titulo' => 'X-Men: Mutant Genesis #1',
         'precio' => '$220.00',
-        'imagen' => 'public/assets/images/comic_xmen.png'
+        'imagen' => './images/comic_xmen.jpg'
     ],
     [
         'id' => 4,
         'titulo' => 'Justice League: New 52 #1',
         'precio' => '$195.00',
-        'imagen' => 'public/assets/images/comic_justice.png'
+        'imagen' => './images/comic_justice.jpg'
     ]
 ];
 ?>

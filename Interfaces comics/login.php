@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-wrapper">
         <!-- Lado Izquierdo: Ilustración de Superhéroes con Marca de Agua KomiX -->
         <div class="auth-banner">
-            <img src="public/assets/images/login_hero.png" alt="Superheroes KomiX" class="auth-banner-img" onerror="this.onerror=null; this.src='assets/images/login_hero.png';">
+            <img src="./images/komixLogin.png" alt="Superheroes KomiX" class="auth-banner-img" onerror="this.onerror=null; this.src='./images/komixLogin.png';">
             <div class="auth-banner-overlay">
                 <!-- Logotipo KomiX superpuesto -->
             </div>

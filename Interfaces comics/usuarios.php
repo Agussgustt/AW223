@@ -1,91 +1,166 @@
 <?php
+/**
+ * KomiX - Gestión de Usuarios
+ * Archivo: usuarios.php (Página 16 del diseño)
+ * Funcionalidad: Listado general de usuarios con eliminación real JS y enlaces a la interfaz independiente de creación/edición
+ */
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $pagina_actual = 'usuario';
 $titulo_pagina = 'KomiX - Gestión de Usuarios';
+
+// Inicializar lista de usuarios en sesión si no existe
+if (!isset($_SESSION['komix_usuarios'])) {
+    $_SESSION['komix_usuarios'] = [
+        1 => ['id' => 1, 'nombre' => 'Alberto Mendoza', 'correo' => 'mendoza@komix.com', 'rol' => 'Admin', 'activo' => true],
+        2 => ['id' => 2, 'nombre' => 'Rodrigo García', 'correo' => 'rgarcia@komix.com', 'rol' => 'Vendedor', 'activo' => true],
+        3 => ['id' => 3, 'nombre' => 'Lucía Pérez', 'correo' => 'lperez@komix.com', 'rol' => 'Vendedor', 'activo' => true],
+        4 => ['id' => 4, 'nombre' => 'Carlos Morales', 'correo' => 'cmorales@komix.com', 'rol' => 'Inventario', 'activo' => false],
+        5 => ['id' => 5, 'nombre' => 'Valeria Castillo', 'correo' => 'vcastillo@komix.com', 'rol' => 'Cajero', 'activo' => true],
+    ];
+}
+
+$mensaje_alerta = $_GET['msg'] ?? null;
+$tipo_alerta = $_GET['tipo'] ?? 'info';
+
+// Procesar eliminación de usuario
+if (isset($_GET['eliminar'])) {
+    $id_eliminar = (int)$_GET['eliminar'];
+    if (isset($_SESSION['komix_usuarios'][$id_eliminar])) {
+        $nombre_eliminado = $_SESSION['komix_usuarios'][$id_eliminar]['nombre'];
+        unset($_SESSION['komix_usuarios'][$id_eliminar]);
+        $mensaje_alerta = "El usuario '{$nombre_eliminado}' ha sido eliminado exitosamente.";
+        $tipo_alerta = 'success';
+    }
+}
+
+$usuarios = $_SESSION['komix_usuarios'];
+
 include 'includes/header.php';
 include 'includes/sidebar.php';
-
-$usuarios = [
-    ['nombre' => 'Alberto Mendoza', 'correo' => 'mendoza@komix.com', 'rol' => 'Admin', 'activo' => true],
-    ['nombre' => 'Rodrigo García', 'correo' => 'rgarcia@komix.com', 'rol' => 'Vendedor', 'activo' => true],
-    ['nombre' => 'Lucía Pérez', 'correo' => 'lperez@komix.com', 'rol' => 'Vendedor', 'activo' => true],
-    ['nombre' => 'Carlos Morales', 'correo' => 'cmorales@komix.com', 'rol' => 'Inventario', 'activo' => false],
-    ['nombre' => 'Valeria Castillo', 'correo' => 'vcastillo@komix.com', 'rol' => 'Cajero', 'activo' => true],
-];
 ?>
 
-<div class="layout-con-panel-derecho">
-    <!-- Columna Principal -->
-    <main class="main-column">
-        <h1 class="page-title" style="margin-bottom: 24px;">Gestion de usuarios</h1>
+<main class="main-content">
+    <div class="content-header-row" style="margin-bottom: 24px;">
+        <h1 class="page-title">Gestion de usuarios</h1>
+        <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 0.9rem; color: #444; font-weight: 600;">
+                Total usuarios activos: <strong><?php echo count($usuarios); ?></strong>
+            </span>
+            <!-- Botón hacia la interfaz independiente de Crear Nuevo Usuario -->
+            <a href="usuarios_nuevo.php" class="btn-nuevo-rojo" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-plus"></i> Crear nuevo usuario
+            </a>
+        </div>
+    </div>
 
-        <!-- Tabla de Usuarios -->
-        <div class="komix-table-container">
-            <div class="table-header-row" style="grid-template-columns: 1.5fr 2fr 1.5fr 1fr 100px;">
-                <div>Nombre:</div>
-                <div>Correo:</div>
-                <div style="text-align: center;">Rol:</div>
-                <div style="text-align: center;">Estado:</div>
-                <div style="text-align: right;">Acciones:</div>
+    <!-- Barra de Búsqueda -->
+    <div class="filter-bar-row">
+        <div class="busqueda-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="input-busqueda-pill" placeholder="Buscar usuario por nombre o correo">
+        </div>
+    </div>
+
+    <!-- Tabla de Usuarios -->
+    <div class="komix-table-container" id="tabla-usuarios">
+        <div class="table-header-row" style="grid-template-columns: 1.8fr 2.2fr 1.5fr 1fr 100px;">
+            <div>Nombre:</div>
+            <div>Correo:</div>
+            <div style="text-align: center;">Rol:</div>
+            <div style="text-align: center;">Estado:</div>
+            <div style="text-align: right;">Acciones:</div>
+        </div>
+
+        <?php if (empty($usuarios)): ?>
+            <div class="table-data-row" style="text-align: center; display: block; padding: 28px;">
+                <p style="color: #666; font-size: 0.95rem;">No hay usuarios registrados actualmente.</p>
             </div>
-
+        <?php else: ?>
             <?php foreach ($usuarios as $u): ?>
-                <div class="table-data-row" style="grid-template-columns: 1.5fr 2fr 1.5fr 1fr 100px;">
-                    <div style="font-weight: 700;"><?php echo htmlspecialchars($u['nombre']); ?></div>
+                <div 
+                    class="table-data-row" 
+                    id="fila-usuario-<?php echo $u['id']; ?>"
+                    style="grid-template-columns: 1.8fr 2.2fr 1.5fr 1fr 100px;"
+                >
+                    <div style="font-weight: 700;">
+                        <?php echo htmlspecialchars($u['nombre']); ?>
+                    </div>
                     <div style="color: #444;"><?php echo htmlspecialchars($u['correo']); ?></div>
                     <div style="text-align: center;">
-                        <select class="dropdown-rol-morado">
-                            <option value="Admin" <?php echo $u['rol'] === 'Admin' ? 'selected' : ''; ?>>Admin</option>
-                            <option value="Vendedor" <?php echo $u['rol'] === 'Vendedor' ? 'selected' : ''; ?>>Vendedor</option>
-                            <option value="Inventario" <?php echo $u['rol'] === 'Inventario' ? 'selected' : ''; ?>>Inventario</option>
-                            <option value="Cajero" <?php echo $u['rol'] === 'Cajero' ? 'selected' : ''; ?>>Cajero</option>
-                        </select>
+                        <span style="font-size: 0.85rem; font-weight: 700; color: #7b0808; background: #ffeaea; padding: 4px 12px; border-radius: var(--radio-pill);">
+                            <?php echo htmlspecialchars($u['rol']); ?>
+                        </span>
                     </div>
                     <div style="text-align: center;">
                         <label class="switch-toggle">
-                            <input type="checkbox" <?php echo $u['activo'] ? 'checked' : ''; ?>>
+                            <input 
+                                type="checkbox" 
+                                <?php echo $u['activo'] ? 'checked' : ''; ?>
+                                onchange="KomixAlert.info('Estado de <?php echo addslashes($u['nombre']); ?> actualizado.');"
+                            >
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
                     <div class="table-actions" style="justify-content: flex-end;">
-                        <button class="btn-action-icon" title="Editar"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn-action-icon" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+                        <!-- Botón Editar: dirige a la interfaz independiente usuarios_nuevo.php?editar=ID -->
+                        <a 
+                            href="usuarios_nuevo.php?editar=<?php echo $u['id']; ?>" 
+                            class="btn-action-icon" 
+                            title="Editar usuario <?php echo htmlspecialchars($u['nombre']); ?>"
+                            style="text-decoration: none; display: flex; align-items: center; justify-content: center;"
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+
+                        <!-- Botón Eliminar con confirmación modal JS -->
+                        <button 
+                            type="button" 
+                            class="btn-action-icon" 
+                            title="Eliminar usuario"
+                            onclick="confirmarEliminarUsuario(<?php echo $u['id']; ?>, '<?php echo addslashes($u['nombre']); ?>')"
+                        >
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
-    </main>
+        <?php endif; ?>
+    </div>
+</main>
 
-    <!-- Panel Lateral Derecho Rojo: Crear Nuevo Usuario -->
-    <aside class="side-panel-rojo">
-        <h2 class="side-panel-title">Crear nuevo usuario</h2>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    <?php if ($mensaje_alerta): ?>
+        if (typeof KomixAlert !== 'undefined') {
+            KomixAlert.<?php echo $tipo_alerta; ?>('<?php echo addslashes($mensaje_alerta); ?>');
+        }
+    <?php endif; ?>
+});
 
-        <form action="usuarios.php" method="POST" class="side-panel-form">
-            <div class="form-group-panel">
-                <label>Nombre:</label>
-                <input type="text" name="nombre" class="form-input-white" required>
-            </div>
-
-            <div class="form-group-panel">
-                <label>Asignar Rol:</label>
-                <select name="rol" class="form-input-white" style="appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23111\' stroke-width=\'2\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 14px center; background-size: 14px;">
-                    <option value="Admin">Administrador General</option>
-                    <option value="Vendedor">Vendedor de Mostrador</option>
-                    <option value="Inventario">Encargado de Almacén</option>
-                    <option value="Cajero">Cajero POS</option>
-                </select>
-            </div>
-
-            <div class="form-group-panel">
-                <label>Correo:</label>
-                <input type="email" name="correo" class="form-input-white" required>
-            </div>
-
-            <button type="submit" class="btn-guardar-panel">
-                Generar
-            </button>
-        </form>
-    </aside>
-</div>
+/**
+ * Confirmar eliminación de usuario mediante JS/alertas.js
+ */
+function confirmarEliminarUsuario(id, nombre) {
+    if (typeof KomixAlert !== 'undefined') {
+        KomixAlert.confirm({
+            titulo: '¿Eliminar Usuario?',
+            mensaje: `¿Estás seguro de que deseas eliminar permanentemente al usuario <strong>"${nombre}"</strong> del sistema KomiX? Esta acción no se puede deshacer.`,
+            tipo: 'danger',
+            confirmText: 'Sí, eliminar',
+            cancelText: 'Cancelar',
+            onConfirm: function () {
+                window.location.href = `usuarios.php?eliminar=${id}`;
+            }
+        });
+    } else {
+        if (confirm(`¿Estás seguro de eliminar al usuario ${nombre}?`)) {
+            window.location.href = `usuarios.php?eliminar=${id}`;
+        }
+    }
+}
+</script>
 
 <?php include 'includes/footer.php'; ?>

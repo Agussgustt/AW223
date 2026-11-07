@@ -27,7 +27,7 @@ if (!isset($titulo_pagina)) {
         <header class="app-header">
             <div class="header-left">
                 <a href="index.php">
-                    <img src="public/assets/images/komix_logo.png" alt="KomiX" class="header-logo" onerror="this.onerror=null; this.src='assets/images/komix_logo.png';">
+                    <img src="./images/komix_logo.png" alt="KomiX" class="header-logo" onerror="this.onerror=null; this.src='./images/komix_logo.png';">
                 </a>
                 <div class="header-search">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>

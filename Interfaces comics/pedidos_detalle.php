@@ -80,7 +80,7 @@ $detalles = [
 
             <div class="modal-actions">
                 <a href="pedidos.php" class="btn-modal-cerrar">cerrar</a>
-                <button class="btn-modal-ingresar" onclick="alert('Mercancía ingresada al inventario con éxito'); window.location.href='inventario.php';">
+                <button class="btn-modal-ingresar" onclick="if (typeof KomixAlert !== 'undefined') { KomixAlert.success('Mercancía ingresada al inventario con éxito'); setTimeout(function(){ window.location.href='inventario.php'; }, 1000); } else { window.location.href='inventario.php'; }">
                     Ingresar a inv
                 </button>
             </div>
