@@ -53,7 +53,7 @@ $comics_catalogo = [
                     src="<?php echo htmlspecialchars($comic['imagen']); ?>" 
                     alt="<?php echo htmlspecialchars($comic['titulo']); ?>" 
                     class="comic-cover-img"
-                    onerror="this.onerror=null; this.src='assets/images/comic_action.png';"
+                    onerror="this.onerror=null; this.src='./images/comic_action.png';"
                 >
                 <div class="comic-card-info">
                     <span class="comic-card-title"><?php echo htmlspecialchars($comic['titulo']); ?></span>

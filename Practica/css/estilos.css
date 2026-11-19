@@ -1,0 +1,92 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: black;
+    background-color: #f4f4f4;
+}
+
+header{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: black;
+    color: ghostwhite;
+}
+
+header h1{
+    margin: 0;
+    font-size: 50px;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    background-color: aliceblue;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a:hover{
+    color: blue;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+section{
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.campo label{
+    font-weight: bold;
+}
+
+.campo input, 
+.campo textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.campo textarea{
+    resize: vertical;
+    min-height: 100px;
+}
+
+form button{
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

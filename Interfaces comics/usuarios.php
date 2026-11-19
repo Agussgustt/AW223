@@ -107,7 +107,7 @@ include 'includes/sidebar.php';
                     <div class="table-actions" style="justify-content: flex-end;">
                         <!-- Botón Editar: dirige a la interfaz independiente usuarios_nuevo.php?editar=ID -->
                         <a 
-                            href="usuarios_nuevo.php?editar=<?php echo $u['id']; ?>" 
+                            href="./usuarios_nuevo.php?editar=<?php echo $u['id']; ?>" 
                             class="btn-action-icon" 
                             title="Editar usuario <?php echo htmlspecialchars($u['nombre']); ?>"
                             style="text-decoration: none; display: flex; align-items: center; justify-content: center;"
